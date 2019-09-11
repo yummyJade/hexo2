@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | Hexo</title>
+  <title>webpack css模块化和ant-design按需加载冲突 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="其实具体出现了什么问题，我也记得不清楚了，今天突然回想起来必须记录一下，一个思想就是用exclude将node_module目录下的文件排除，网上有很多相关例子，但不知是不是因为时间久远，都不生效，无奈，又只好啃回官方文档，我的解决方式如下 webpack正常打包的话，所有的css都会被打包在一起，造成css的全局污染，我们可以采用模块化的方式，其实就是借用hash改变类或id名webpack.c">
+<meta name="keywords" content="react,javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack css模块化和ant-design按需加载冲突">
+<meta property="og:url" content="http://yoursite.com/2019/09/11/webpack-css模块化和ant-design按需加载冲突/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="其实具体出现了什么问题，我也记得不清楚了，今天突然回想起来必须记录一下，一个思想就是用exclude将node_module目录下的文件排除，网上有很多相关例子，但不知是不是因为时间久远，都不生效，无奈，又只好啃回官方文档，我的解决方式如下 webpack正常打包的话，所有的css都会被打包在一起，造成css的全局污染，我们可以采用模块化的方式，其实就是借用hash改变类或id名webpack.c">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-09-11T06:32:30.893Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="webpack css模块化和ant-design按需加载冲突">
+<meta name="twitter:description" content="其实具体出现了什么问题，我也记得不清楚了，今天突然回想起来必须记录一下，一个思想就是用exclude将node_module目录下的文件排除，网上有很多相关例子，但不知是不是因为时间久远，都不生效，无奈，又只好啃回官方文档，我的解决方式如下 webpack正常打包的话，所有的css都会被打包在一起，造成css的全局污染，我们可以采用模块化的方式，其实就是借用hash改变类或id名webpack.c">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -160,36 +165,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-webpack-css模块化和ant-design按需加载冲突" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      webpack css模块化和ant-design按需加载冲突
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/11/webpack-css模块化和ant-design按需加载冲突/" class="archive-article-date">
+
+        
+        <a href="/2019/09/11/webpack-css模块化和ant-design按需加载冲突/" class="archive-article-date">
   	<time datetime="2019-09-11T06:32:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/11/webpack-css模块化和ant-design按需加载冲突/">webpack css模块化和ant-design按需加载冲突</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>其实具体出现了什么问题，我也记得不清楚了，今天突然回想起来必须记录一下，一个思想就是用exclude将node_module目录下的文件排除，网上有很多相关例子，但不知是不是因为时间久远，都不生效，无奈，又只好啃回官方文档，我的解决方式如下</p>
+<p>webpack正常打包的话，所有的css都会被打包在一起，造成css的全局污染，我们可以采用模块化的方式，其实就是借用hash改变类或id名<br><strong>webpack.config.js</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">  module: &#123;</span><br><span class="line">    rules: [     </span><br><span class="line"> &#123;</span><br><span class="line">        test: /\.(js|jsx)$/,</span><br><span class="line">        loader: &quot;babel-loader&quot;,</span><br><span class="line"></span><br><span class="line">        options: &#123;</span><br><span class="line">          // presets: [</span><br><span class="line">          //           //   &quot;env&quot;</span><br><span class="line">          //           // ],</span><br><span class="line">          plugins: [</span><br><span class="line">              [ &quot;import&quot;,&#123;libraryName: &quot;antd&quot;, style: &apos;css&apos;&#125;] // antd按需加载</span><br><span class="line">          ]</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        exclude: /node_module/</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;//CSS处理</span><br><span class="line">        test: /\.css$/,</span><br><span class="line">        use: [&apos;style-loader&apos;, &apos;css-loader?modules&apos;],</span><br><span class="line">        exclude: /node_modules/,</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      &#123;//antd样式处理</span><br><span class="line">        test:/\.css$/,</span><br><span class="line">        exclude:/src/,</span><br><span class="line">        use:[</span><br><span class="line">          &#123; loader: &quot;style-loader&quot;,&#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            loader: &quot;css-loader&quot;,</span><br><span class="line">            options:&#123;</span><br><span class="line">              importLoaders:1</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;,</span><br><span class="line">//其他配置项</span><br><span class="line">       &#125;</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+<p>然后在js文件中我们就能模块化加载css而不用担心webpack打包后污染到全局啦</p>
+<p>形如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import styles from &apos;./myTrip.css&apos;;</span><br></pre></td></tr></table></figure>
+
+<p>然后还可以快乐加载ant-design</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Pagination &#125; from &apos;antd&apos;;</span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -205,103 +238,122 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/11/webpack-css模块化和ant-design按需加载冲突/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/11/React-Hook父组件获取子组件的数据-函数/" class="archive-article-date">
-  	<time datetime="2019-09-11T06:30:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/11/React-Hook父组件获取子组件的数据-函数/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">React Hook父组件获取子组件的数据/函数</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/11/React-Hook父组件获取子组件的数据-函数/">React Hook父组件获取子组件的数据/函数</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javasrcipt</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/11/react学习之js-xlsx导入和导出excel表格/" class="archive-article-date">
-  	<time datetime="2019-09-11T01:19:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/11/react学习之js-xlsx导入和导出excel表格/">react学习之js-xlsx导入和导出excel表格</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yoursite.com/2019/09/11/webpack-css模块化和ant-design按需加载冲突/",
+  owner: 'yummyJade',
+  repo: 'HexoBlogComment',
+  oauth: {
+    client_id: '2f41808c2707021fe345',
+    client_secret: 'bca1f2463cba87d80ddacc85112fa7ff9cd8f5e8',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -324,8 +376,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

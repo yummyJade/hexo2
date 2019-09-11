@@ -162,6 +162,191 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-webpack-css模块化和ant-design按需加载冲突" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/11/webpack-css模块化和ant-design按需加载冲突/">webpack css模块化和ant-design按需加载冲突</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/11/webpack-css模块化和ant-design按需加载冲突/" class="archive-article-date">
+  	<time datetime="2019-09-11T06:32:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>其实具体出现了什么问题，我也记得不清楚了，今天突然回想起来必须记录一下，一个思想就是用exclude将node_module目录下的文件排除，网上有很多相关例子，但不知是不是因为时间久远，都不生效，无奈，又只好啃回官方文档，我的解决方式如下</p>
+<p>webpack正常打包的话，所有的css都会被打包在一起，造成css的全局污染，我们可以采用模块化的方式，其实就是借用hash改变类或id名<br><strong>webpack.config.js</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">  module: &#123;</span><br><span class="line">    rules: [     </span><br><span class="line"> &#123;</span><br><span class="line">        test: /\.(js|jsx)$/,</span><br><span class="line">        loader: &quot;babel-loader&quot;,</span><br><span class="line"></span><br><span class="line">        options: &#123;</span><br><span class="line">          // presets: [</span><br><span class="line">          //           //   &quot;env&quot;</span><br><span class="line">          //           // ],</span><br><span class="line">          plugins: [</span><br><span class="line">              [ &quot;import&quot;,&#123;libraryName: &quot;antd&quot;, style: &apos;css&apos;&#125;] // antd按需加载</span><br><span class="line">          ]</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        exclude: /node_module/</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;//CSS处理</span><br><span class="line">        test: /\.css$/,</span><br><span class="line">        use: [&apos;style-loader&apos;, &apos;css-loader?modules&apos;],</span><br><span class="line">        exclude: /node_modules/,</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      &#123;//antd样式处理</span><br><span class="line">        test:/\.css$/,</span><br><span class="line">        exclude:/src/,</span><br><span class="line">        use:[</span><br><span class="line">          &#123; loader: &quot;style-loader&quot;,&#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            loader: &quot;css-loader&quot;,</span><br><span class="line">            options:&#123;</span><br><span class="line">              importLoaders:1</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;,</span><br><span class="line">//其他配置项</span><br><span class="line">       &#125;</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
+
+<p>然后在js文件中我们就能模块化加载css而不用担心webpack打包后污染到全局啦</p>
+<p>形如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import styles from &apos;./myTrip.css&apos;;</span><br></pre></td></tr></table></figure>
+
+<p>然后还可以快乐加载ant-design</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Pagination &#125; from &apos;antd&apos;;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/11/webpack-css模块化和ant-design按需加载冲突/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-React-Hook父组件获取子组件的数据-函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/11/React-Hook父组件获取子组件的数据-函数/">React Hook父组件获取子组件的数据/函数</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/11/React-Hook父组件获取子组件的数据-函数/" class="archive-article-date">
+  	<time datetime="2019-09-11T06:30:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们知道在react中，常用props实现子组件数据到父组件的传递，但是父组件调用子组件的功能却不常用。文档上说ref其实不是最佳的选择，但是想着偷懒不学redux，在网上找了很多教程，要不就是hook的讲的太少，要不就是父子组件傻傻分不清，于是只好再啃了一下文档，就学了一下其它hook的api。<br>在这里我们需要用到<code>useImperativeHandle</code>这个api，其函数形式为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useImperativeHandle(ref, createHandle, [deps])</span><br></pre></td></tr></table></figure>
+
+<p>其实这个api也是ref的一种形式，但是相当于做了一定的优化，可以选择让子组件只暴露一定的api给父组件，根据在文档和其他博客上给出的方法，一共有两大步骤：</p>
+<ol>
+<li>将ref传递到子组件中</li>
+<li>需要使用forwardRef对子组件进行包装</li>
+</ol>
+<p><strong>子组件MyWorldMap</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"> const mapRef = useRef(null);</span><br><span class="line">    useImperativeHandle(ref, () =&gt; &#123;</span><br><span class="line"></span><br><span class="line">        return &#123;</span><br><span class="line">            //clickSwitch是子组件暴露的函数</span><br><span class="line">            clickSwitch() &#123;</span><br><span class="line">             </span><br><span class="line">                if(type == 1)&#123;</span><br><span class="line">                    initChinaMap();</span><br><span class="line">                    setType(2);</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    initWordMap();</span><br><span class="line">                    setType(1);</span><br><span class="line">                &#125;</span><br><span class="line">              </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">//你的return内容，注意ref</span><br><span class="line"></span><br><span class="line">    return(</span><br><span class="line">        &lt;React.Fragment&gt;</span><br><span class="line"></span><br><span class="line">            &lt;div id=&#123;&quot;myWorldMap&quot;&#125; style=&#123;&#123; width: &quot;800px&quot;, height: &quot;400px&quot; &#125;&#125;  ref=&#123;mapRef&#125;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/React.Fragment&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//最后要配合forwardRef</span><br><span class="line">MyWorldMap = forwardRef(MyWorldMap);</span><br><span class="line">export default MyWorldMap;</span><br></pre></td></tr></table></figure>
+
+<p>注：ref是子组件声明的时候传进来的，也就是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function MyWorldMap (props,ref)&#123;</span><br><span class="line">//..你的代码</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//export...</span><br></pre></td></tr></table></figure>
+
+<p>其实官方文档给出来的例子是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function FancyInput(props, ref) &#123;</span><br><span class="line">  const inputRef = useRef();</span><br><span class="line">  useImperativeHandle(ref, () =&gt; (&#123;</span><br><span class="line">    focus: () =&gt; &#123;</span><br><span class="line">      inputRef.current.focus();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;));</span><br><span class="line">  return &lt;input ref=&#123;inputRef&#125; ... /&gt;;</span><br><span class="line">&#125;</span><br><span class="line">FancyInput = forwardRef(FancyInput);</span><br></pre></td></tr></table></figure>
+
+<p>两种方法都是可以的</p>
+<p><strong>父组件MyTrip</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const myWordMapRef = useRef();</span><br><span class="line"></span><br><span class="line">return(</span><br><span class="line">  //省略一些代码，注意ref</span><br><span class="line"> &lt;MyWorldMap proData = &#123; myMapData&#125; handleMapClick = &#123;handleMapClick.bind(this)&#125; ref=&#123;myWordMapRef&#125;&gt;</span><br><span class="line"></span><br><span class="line"> &lt;/MyWorldMap&gt;</span><br><span class="line">&lt;div className=&#123;styles[&quot;mapButton-wrap&quot;]&#125;&gt;</span><br><span class="line">       &lt;ButtonGroup&gt;</span><br><span class="line">               &lt;Button onClick=&#123;() =&gt; myWordMapRef.current.clickSwitch()&#125;&gt;Switch&lt;/Button&gt;</span><br><span class="line">               &lt;Button onClick=&#123;()=&gt;clickAll() &#125;&gt;All&lt;/Button&gt;</span><br><span class="line">        &lt;/ButtonGroup&gt;</span><br><span class="line"> &lt;/div&gt;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>现在你就可以在父组件里面通过<code>myWordMapRef.current.clickSwitch()</code>调用函数了</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javasrcipt</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/11/React-Hook父组件获取子组件的数据-函数/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-react学习之js-xlsx导入和导出excel表格" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -333,6 +518,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javasrcipt</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>

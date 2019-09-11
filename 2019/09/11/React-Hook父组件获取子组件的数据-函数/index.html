@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | Hexo</title>
+  <title>React Hook父组件获取子组件的数据/函数 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="我们知道在react中，常用props实现子组件数据到父组件的传递，但是父组件调用子组件的功能却不常用。文档上说ref其实不是最佳的选择，但是想着偷懒不学redux，在网上找了很多教程，要不就是hook的讲的太少，要不就是父子组件傻傻分不清，于是只好再啃了一下文档，就学了一下其它hook的api。在这里我们需要用到useImperativeHandle这个api，其函数形式为 1useImpera">
+<meta name="keywords" content="javasrcipt,react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Hook父组件获取子组件的数据&#x2F;函数">
+<meta property="og:url" content="http://yoursite.com/2019/09/11/React-Hook父组件获取子组件的数据-函数/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="我们知道在react中，常用props实现子组件数据到父组件的传递，但是父组件调用子组件的功能却不常用。文档上说ref其实不是最佳的选择，但是想着偷懒不学redux，在网上找了很多教程，要不就是hook的讲的太少，要不就是父子组件傻傻分不清，于是只好再啃了一下文档，就学了一下其它hook的api。在这里我们需要用到useImperativeHandle这个api，其函数形式为 1useImpera">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-09-11T06:31:20.718Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="React Hook父组件获取子组件的数据&#x2F;函数">
+<meta name="twitter:description" content="我们知道在react中，常用props实现子组件数据到父组件的传递，但是父组件调用子组件的功能却不常用。文档上说ref其实不是最佳的选择，但是想着偷懒不学redux，在网上找了很多教程，要不就是hook的讲的太少，要不就是父子组件傻傻分不清，于是只好再啃了一下文档，就学了一下其它hook的api。在这里我们需要用到useImperativeHandle这个api，其函数形式为 1useImpera">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -160,78 +165,77 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-React-Hook父组件获取子组件的数据-函数" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/11/webpack-css模块化和ant-design按需加载冲突/" class="archive-article-date">
-  	<time datetime="2019-09-11T06:32:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/11/webpack-css模块化和ant-design按需加载冲突/">webpack css模块化和ant-design按需加载冲突</a>
+    <h1 class="article-title" itemprop="name">
+      React Hook父组件获取子组件的数据/函数
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/11/React-Hook父组件获取子组件的数据-函数/" class="archive-article-date">
+        
+        <a href="/2019/09/11/React-Hook父组件获取子组件的数据-函数/" class="archive-article-date">
   	<time datetime="2019-09-11T06:30:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/11/React-Hook父组件获取子组件的数据-函数/">React Hook父组件获取子组件的数据/函数</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们知道在react中，常用props实现子组件数据到父组件的传递，但是父组件调用子组件的功能却不常用。文档上说ref其实不是最佳的选择，但是想着偷懒不学redux，在网上找了很多教程，要不就是hook的讲的太少，要不就是父子组件傻傻分不清，于是只好再啃了一下文档，就学了一下其它hook的api。<br>在这里我们需要用到<code>useImperativeHandle</code>这个api，其函数形式为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useImperativeHandle(ref, createHandle, [deps])</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+<p>其实这个api也是ref的一种形式，但是相当于做了一定的优化，可以选择让子组件只暴露一定的api给父组件，根据在文档和其他博客上给出的方法，一共有两大步骤：</p>
+<ol>
+<li>将ref传递到子组件中</li>
+<li>需要使用forwardRef对子组件进行包装</li>
+</ol>
+<p><strong>子组件MyWorldMap</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"> const mapRef = useRef(null);</span><br><span class="line">    useImperativeHandle(ref, () =&gt; &#123;</span><br><span class="line"></span><br><span class="line">        return &#123;</span><br><span class="line">            //clickSwitch是子组件暴露的函数</span><br><span class="line">            clickSwitch() &#123;</span><br><span class="line">             </span><br><span class="line">                if(type == 1)&#123;</span><br><span class="line">                    initChinaMap();</span><br><span class="line">                    setType(2);</span><br><span class="line">                &#125;else&#123;</span><br><span class="line">                    initWordMap();</span><br><span class="line">                    setType(1);</span><br><span class="line">                &#125;</span><br><span class="line">              </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">//你的return内容，注意ref</span><br><span class="line"></span><br><span class="line">    return(</span><br><span class="line">        &lt;React.Fragment&gt;</span><br><span class="line"></span><br><span class="line">            &lt;div id=&#123;&quot;myWorldMap&quot;&#125; style=&#123;&#123; width: &quot;800px&quot;, height: &quot;400px&quot; &#125;&#125;  ref=&#123;mapRef&#125;&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">        &lt;/React.Fragment&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//最后要配合forwardRef</span><br><span class="line">MyWorldMap = forwardRef(MyWorldMap);</span><br><span class="line">export default MyWorldMap;</span><br></pre></td></tr></table></figure>
+
+<p>注：ref是子组件声明的时候传进来的，也就是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function MyWorldMap (props,ref)&#123;</span><br><span class="line">//..你的代码</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//export...</span><br></pre></td></tr></table></figure>
+
+<p>其实官方文档给出来的例子是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function FancyInput(props, ref) &#123;</span><br><span class="line">  const inputRef = useRef();</span><br><span class="line">  useImperativeHandle(ref, () =&gt; (&#123;</span><br><span class="line">    focus: () =&gt; &#123;</span><br><span class="line">      inputRef.current.focus();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;));</span><br><span class="line">  return &lt;input ref=&#123;inputRef&#125; ... /&gt;;</span><br><span class="line">&#125;</span><br><span class="line">FancyInput = forwardRef(FancyInput);</span><br></pre></td></tr></table></figure>
+
+<p>两种方法都是可以的</p>
+<p><strong>父组件MyTrip</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const myWordMapRef = useRef();</span><br><span class="line"></span><br><span class="line">return(</span><br><span class="line">  //省略一些代码，注意ref</span><br><span class="line"> &lt;MyWorldMap proData = &#123; myMapData&#125; handleMapClick = &#123;handleMapClick.bind(this)&#125; ref=&#123;myWordMapRef&#125;&gt;</span><br><span class="line"></span><br><span class="line"> &lt;/MyWorldMap&gt;</span><br><span class="line">&lt;div className=&#123;styles[&quot;mapButton-wrap&quot;]&#125;&gt;</span><br><span class="line">       &lt;ButtonGroup&gt;</span><br><span class="line">               &lt;Button onClick=&#123;() =&gt; myWordMapRef.current.clickSwitch()&#125;&gt;Switch&lt;/Button&gt;</span><br><span class="line">               &lt;Button onClick=&#123;()=&gt;clickAll() &#125;&gt;All&lt;/Button&gt;</span><br><span class="line">        &lt;/ButtonGroup&gt;</span><br><span class="line"> &lt;/div&gt;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>现在你就可以在父组件里面通过<code>myWordMapRef.current.clickSwitch()</code>调用函数了</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -247,61 +251,131 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/11/React-Hook父组件获取子组件的数据-函数/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/11/react学习之js-xlsx导入和导出excel表格/" class="archive-article-date">
-  	<time datetime="2019-09-11T01:19:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/09/11/webpack-css模块化和ant-design按需加载冲突/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          webpack css模块化和ant-design按需加载冲突
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/11/react学习之js-xlsx导入和导出excel表格/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">react学习之js-xlsx导入和导出excel表格</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/11/react学习之js-xlsx导入和导出excel表格/">react学习之js-xlsx导入和导出excel表格</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "http://yoursite.com/2019/09/11/React-Hook父组件获取子组件的数据-函数/",
+  owner: 'yummyJade',
+  repo: 'HexoBlogComment',
+  oauth: {
+    client_id: '2f41808c2707021fe345',
+    client_secret: 'bca1f2463cba87d80ddacc85112fa7ff9cd8f5e8',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -324,8 +398,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
