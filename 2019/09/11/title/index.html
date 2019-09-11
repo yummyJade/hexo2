@@ -6,15 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019 | Hexo</title>
+  <title>react学习之js-xlsx导入和导出excel表格 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="最近发现网上关于react导入导出xlsx的资源过少，特意整理出来">
+<meta name="keywords" content="react,javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react学习之js-xlsx导入和导出excel表格">
+<meta property="og:url" content="http://yoursite.com/2019/09/11/title/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="最近发现网上关于react导入导出xlsx的资源过少，特意整理出来">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1394463/201906/1394463-20190602233252680-1153181715.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1394463/201906/1394463-20190602233408676-1522123505.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1394463/201906/1394463-20190602233459467-323032053.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1394463/201906/1394463-20190602233535041-1209875785.png">
+<meta property="og:image" content="https://img2018.cnblogs.com/blog/1394463/201906/1394463-20190602233546316-1272009102.png">
+<meta property="og:updated_time" content="2019-09-11T01:29:18.586Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="react学习之js-xlsx导入和导出excel表格">
+<meta name="twitter:description" content="最近发现网上关于react导入导出xlsx的资源过少，特意整理出来">
+<meta name="twitter:image" content="https://img2018.cnblogs.com/blog/1394463/201906/1394463-20190602233252680-1153181715.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -154,36 +165,85 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-title" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/11/title/" class="archive-article-date">
-  	<time datetime="2019-09-11T01:19:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/11/title/">react学习之js-xlsx导入和导出excel表格</a>
+    <h1 class="article-title" itemprop="name">
+      react学习之js-xlsx导入和导出excel表格
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/09/11/title/" class="archive-article-date">
+  	<time datetime="2019-09-11T01:19:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近发现网上关于react导入导出xlsx的资源过少，特意整理出来</p>
+<a id="more"></a>
+
+
+<p>项目需求，需要导入和导出表单，发现前端已经强大到无所不能（可惜我有点懒，学的并不勤快）<br>因此使用到js-xlsx，附上github地址:<a href="https://github.com/SheetJS/js-xlsx" target="_blank" rel="noopener">https://github.com/SheetJS/js-xlsx</a></p>
+<h2 id="导入表单"><a href="#导入表单" class="headerlink" title="导入表单"></a>导入表单</h2><p>1.控制台安装</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install xlsx</span><br></pre></td></tr></table></figure>
+
+<p>2.在js文件中引入</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> XLSX <span class="keyword">from</span> <span class="string">'xlsx'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> ExcelUtil <span class="keyword">from</span> <span class="string">'../../utils/excelUtil'</span>;        <span class="comment">//注：excelUtil.js是我自定义的关于表单的操作模块</span></span><br></pre></td></tr></table></figure>
+
+<p>3.函数声明</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">importExcel</span>(<span class="params">file</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取上传的文件对象</span></span><br><span class="line">    <span class="keyword">const</span> &#123; files &#125; = file.target;</span><br><span class="line">    <span class="comment">// 通过FileReader对象读取文件</span></span><br><span class="line">    <span class="keyword">const</span> fileReader = <span class="keyword">new</span> FileReader();</span><br><span class="line">    fileReader.onload = <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> &#123; result &#125; = event.target;</span><br><span class="line">            <span class="comment">// 以二进制流方式读取得到整份excel表格对象</span></span><br><span class="line">            <span class="keyword">const</span> workbook = XLSX.read(result, &#123; <span class="attr">type</span>: <span class="string">'binary'</span> &#125;);</span><br><span class="line">            <span class="keyword">let</span> data = []; <span class="comment">// 存储获取到的数据</span></span><br><span class="line">            <span class="comment">// 遍历每张工作表进行读取（这里默认只读取第一张表）</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">const</span> sheet <span class="keyword">in</span> workbook.Sheets) &#123;</span><br><span class="line">                <span class="keyword">if</span> (workbook.Sheets.hasOwnProperty(sheet)) &#123;</span><br><span class="line">                    <span class="comment">// 利用 sheet_to_json 方法将 excel 转成 json 数据</span></span><br><span class="line">                    data = data.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));</span><br><span class="line">                    <span class="comment">// break; // 如果只取第一张表，就取消注释这行</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">console</span>.log(data);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">            <span class="comment">// 这里可以抛出文件类型错误不正确的相关提示</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'文件类型不正确'</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 以二进制方式打开文件</span></span><br><span class="line">    fileReader.readAsBinaryString(files[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.使用</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">'file'</span> accept=<span class="string">'.xlsx, .xls'</span> onChange=&#123;(e)=&gt;&#123;ExcelUtil.importExcel(e)&#125; &#125;/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>5.结果<br><img src="https://img2018.cnblogs.com/blog/1394463/201906/1394463-20190602233252680-1153181715.png" alt><br><img src="https://img2018.cnblogs.com/blog/1394463/201906/1394463-20190602233408676-1522123505.png" alt><br>控制台打印出结果：<br><img src="https://img2018.cnblogs.com/blog/1394463/201906/1394463-20190602233459467-323032053.png" alt></p>
+<h2 id="导出表单"><a href="#导出表单" class="headerlink" title="导出表单"></a>导出表单</h2><p>第一第二步同上</p>
+<p>3.函数声明</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">exportExcel</span>(<span class="params">headers, data, fileName = <span class="string">'请假记录表.xlsx'</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> _headers = headers</span><br><span class="line">        .map(<span class="function">(<span class="params">item, i</span>) =&gt;</span> <span class="built_in">Object</span>.assign(&#123;&#125;, &#123; <span class="attr">key</span>: item.key, <span class="attr">title</span>: item.title, <span class="attr">position</span>: <span class="built_in">String</span>.fromCharCode(<span class="number">65</span> + i) + <span class="number">1</span> &#125;))</span><br><span class="line">        .reduce(<span class="function">(<span class="params">prev, next</span>) =&gt;</span> <span class="built_in">Object</span>.assign(&#123;&#125;, prev, &#123; [next.position]: &#123; <span class="attr">key</span>: next.key, <span class="attr">v</span>: next.title &#125; &#125;), &#123;&#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> _data = data</span><br><span class="line">        .map(<span class="function">(<span class="params">item, i</span>) =&gt;</span> headers.map(<span class="function">(<span class="params">key, j</span>) =&gt;</span> <span class="built_in">Object</span>.assign(&#123;&#125;, &#123; <span class="attr">content</span>: item[key.key], <span class="attr">position</span>: <span class="built_in">String</span>.fromCharCode(<span class="number">65</span> + j) + (i + <span class="number">2</span>) &#125;)))</span><br><span class="line">        <span class="comment">// 对刚才的结果进行降维处理（二维数组变成一维数组）</span></span><br><span class="line">        .reduce(<span class="function">(<span class="params">prev, next</span>) =&gt;</span> prev.concat(next))</span><br><span class="line">        <span class="comment">// 转换成 worksheet 需要的结构</span></span><br><span class="line">        .reduce(<span class="function">(<span class="params">prev, next</span>) =&gt;</span> <span class="built_in">Object</span>.assign(&#123;&#125;, prev, &#123; [next.position]: &#123; <span class="attr">v</span>: next.content &#125; &#125;), &#123;&#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 合并 headers 和 data</span></span><br><span class="line">    <span class="keyword">const</span> output = <span class="built_in">Object</span>.assign(&#123;&#125;, _headers, _data);</span><br><span class="line">    <span class="comment">// 获取所有单元格的位置</span></span><br><span class="line">    <span class="keyword">const</span> outputPos = <span class="built_in">Object</span>.keys(output);</span><br><span class="line">    <span class="comment">// 计算出范围 ,["A1",..., "H2"]</span></span><br><span class="line">    <span class="keyword">const</span> ref = <span class="string">`<span class="subst">$&#123;outputPos[<span class="number">0</span>]&#125;</span>:<span class="subst">$&#123;outputPos[outputPos.length - <span class="number">1</span>]&#125;</span>`</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 构建 workbook 对象</span></span><br><span class="line">    <span class="keyword">const</span> wb = &#123;</span><br><span class="line">        SheetNames: [<span class="string">'mySheet'</span>],</span><br><span class="line">        Sheets: &#123;</span><br><span class="line">            mySheet: <span class="built_in">Object</span>.assign(</span><br><span class="line">                &#123;&#125;,</span><br><span class="line">                output,</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="string">'!ref'</span>: ref,</span><br><span class="line">                    <span class="string">'!cols'</span>: [&#123; <span class="attr">wpx</span>: <span class="number">45</span> &#125;, &#123; <span class="attr">wpx</span>: <span class="number">100</span> &#125;, &#123; <span class="attr">wpx</span>: <span class="number">200</span> &#125;, &#123; <span class="attr">wpx</span>: <span class="number">80</span> &#125;, &#123; <span class="attr">wpx</span>: <span class="number">150</span> &#125;, &#123; <span class="attr">wpx</span>: <span class="number">100</span> &#125;, &#123; <span class="attr">wpx</span>: <span class="number">300</span> &#125;, &#123; <span class="attr">wpx</span>: <span class="number">300</span> &#125;],</span><br><span class="line">                &#125;,</span><br><span class="line">            ),</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 导出 Excel</span></span><br><span class="line">    XLSX.writeFile(wb, fileName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.定义表头和数据项</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> initColumn = [&#123;</span><br><span class="line">        title: <span class="string">'姓名'</span>,</span><br><span class="line">        dataIndex: <span class="string">'name'</span>,</span><br><span class="line">        key: <span class="string">'name'</span>,</span><br><span class="line">        className: <span class="string">'text-monospace'</span>,</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        title: <span class="string">'年级'</span>,</span><br><span class="line">        dataIndex: <span class="string">'grade'</span>,</span><br><span class="line">        key: <span class="string">'grade'</span>,</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        title: <span class="string">'部门'</span>,</span><br><span class="line">        dataIndex: <span class="string">'department'</span>,</span><br><span class="line">        key: <span class="string">'department'</span>,</span><br><span class="line">    &#125;];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> attendanceInfoList = [</span><br><span class="line">    &#123;</span><br><span class="line">        name:<span class="string">"张三"</span>,</span><br><span class="line">        grade:<span class="string">"2017级"</span>,</span><br><span class="line">        department:<span class="string">"前端部门"</span></span><br><span class="line"></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        name:<span class="string">"李四"</span>,</span><br><span class="line">        grade:<span class="string">"2017级"</span>,</span><br><span class="line">        department:<span class="string">"程序部门"</span></span><br><span class="line"></span><br><span class="line">    &#125;];</span><br></pre></td></tr></table></figure>
+
+<p>5.使用</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button type=<span class="string">"primary"</span> onClick=&#123;() =&gt; &#123;ExcelUtil.exportExcel(initColumn, attendanceInfoList,<span class="string">"人员名单.xlsx"</span>)&#125;&#125;&gt;导出&lt;<span class="regexp">/button&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>6.结果<br><img src="https://img2018.cnblogs.com/blog/1394463/201906/1394463-20190602233535041-1209875785.png" alt></p>
+<p><img src="https://img2018.cnblogs.com/blog/1394463/201906/1394463-20190602233546316-1272009102.png" alt></p>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//excelUtil.js</span></span><br><span class="line"><span class="keyword">import</span> XLSX <span class="keyword">from</span> <span class="string">'xlsx'</span>;</span><br><span class="line"><span class="keyword">import</span> React,&#123;useState,useEffect&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">importExcel</span>(<span class="params">file</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 获取上传的文件对象</span></span><br><span class="line">    <span class="keyword">const</span> &#123; files &#125; = file.target;</span><br><span class="line">    <span class="comment">// 通过FileReader对象读取文件</span></span><br><span class="line">    <span class="keyword">const</span> fileReader = <span class="keyword">new</span> FileReader();</span><br><span class="line">    fileReader.onload = <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> &#123; result &#125; = event.target;</span><br><span class="line">            <span class="comment">// 以二进制流方式读取得到整份excel表格对象</span></span><br><span class="line">            <span class="keyword">const</span> workbook = XLSX.read(result, &#123; <span class="attr">type</span>: <span class="string">'binary'</span> &#125;);</span><br><span class="line">            <span class="keyword">let</span> data = []; <span class="comment">// 存储获取到的数据</span></span><br><span class="line">            <span class="comment">// 遍历每张工作表进行读取（这里默认只读取第一张表）</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">const</span> sheet <span class="keyword">in</span> workbook.Sheets) &#123;</span><br><span class="line">                <span class="keyword">if</span> (workbook.Sheets.hasOwnProperty(sheet)) &#123;</span><br><span class="line">                    <span class="comment">// 利用 sheet_to_json 方法将 excel 转成 json 数据</span></span><br><span class="line">                    data = data.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));</span><br><span class="line">                    <span class="comment">// break; // 如果只取第一张表，就取消注释这行</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">console</span>.log(data);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">            <span class="comment">// 这里可以抛出文件类型错误不正确的相关提示</span></span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'文件类型不正确'</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 以二进制方式打开文件</span></span><br><span class="line">    fileReader.readAsBinaryString(files[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">exportExcel</span>(<span class="params">headers, data, fileName = <span class="string">'请假记录表.xlsx'</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> _headers = headers</span><br><span class="line">        .map(<span class="function">(<span class="params">item, i</span>) =&gt;</span> <span class="built_in">Object</span>.assign(&#123;&#125;, &#123; <span class="attr">key</span>: item.key, <span class="attr">title</span>: item.title, <span class="attr">position</span>: <span class="built_in">String</span>.fromCharCode(<span class="number">65</span> + i) + <span class="number">1</span> &#125;))</span><br><span class="line">        .reduce(<span class="function">(<span class="params">prev, next</span>) =&gt;</span> <span class="built_in">Object</span>.assign(&#123;&#125;, prev, &#123; [next.position]: &#123; <span class="attr">key</span>: next.key, <span class="attr">v</span>: next.title &#125; &#125;), &#123;&#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> _data = data</span><br><span class="line">        .map(<span class="function">(<span class="params">item, i</span>) =&gt;</span> headers.map(<span class="function">(<span class="params">key, j</span>) =&gt;</span> <span class="built_in">Object</span>.assign(&#123;&#125;, &#123; <span class="attr">content</span>: item[key.key], <span class="attr">position</span>: <span class="built_in">String</span>.fromCharCode(<span class="number">65</span> + j) + (i + <span class="number">2</span>) &#125;)))</span><br><span class="line">        <span class="comment">// 对刚才的结果进行降维处理（二维数组变成一维数组）</span></span><br><span class="line">        .reduce(<span class="function">(<span class="params">prev, next</span>) =&gt;</span> prev.concat(next))</span><br><span class="line">        <span class="comment">// 转换成 worksheet 需要的结构</span></span><br><span class="line">        .reduce(<span class="function">(<span class="params">prev, next</span>) =&gt;</span> <span class="built_in">Object</span>.assign(&#123;&#125;, prev, &#123; [next.position]: &#123; <span class="attr">v</span>: next.content &#125; &#125;), &#123;&#125;);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 合并 headers 和 data</span></span><br><span class="line">    <span class="keyword">const</span> output = <span class="built_in">Object</span>.assign(&#123;&#125;, _headers, _data);</span><br><span class="line">    <span class="comment">// 获取所有单元格的位置</span></span><br><span class="line">    <span class="keyword">const</span> outputPos = <span class="built_in">Object</span>.keys(output);</span><br><span class="line">    <span class="comment">// 计算出范围 ,["A1",..., "H2"]</span></span><br><span class="line">    <span class="keyword">const</span> ref = <span class="string">`<span class="subst">$&#123;outputPos[<span class="number">0</span>]&#125;</span>:<span class="subst">$&#123;outputPos[outputPos.length - <span class="number">1</span>]&#125;</span>`</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 构建 workbook 对象</span></span><br><span class="line">    <span class="keyword">const</span> wb = &#123;</span><br><span class="line">        SheetNames: [<span class="string">'mySheet'</span>],</span><br><span class="line">        Sheets: &#123;</span><br><span class="line">            mySheet: <span class="built_in">Object</span>.assign(</span><br><span class="line">                &#123;&#125;,</span><br><span class="line">                output,</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="string">'!ref'</span>: ref,</span><br><span class="line">                    <span class="string">'!cols'</span>: [&#123; <span class="attr">wpx</span>: <span class="number">45</span> &#125;, &#123; <span class="attr">wpx</span>: <span class="number">100</span> &#125;, &#123; <span class="attr">wpx</span>: <span class="number">200</span> &#125;, &#123; <span class="attr">wpx</span>: <span class="number">80</span> &#125;, &#123; <span class="attr">wpx</span>: <span class="number">150</span> &#125;, &#123; <span class="attr">wpx</span>: <span class="number">100</span> &#125;, &#123; <span class="attr">wpx</span>: <span class="number">300</span> &#125;, &#123; <span class="attr">wpx</span>: <span class="number">300</span> &#125;],</span><br><span class="line">                &#125;,</span><br><span class="line">            ),</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 导出 Excel</span></span><br><span class="line">    XLSX.writeFile(wb, fileName);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;importExcel,exportExcel&#125;;</span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -199,46 +259,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/11/title/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/11/hello-world/" class="archive-article-date">
-  	<time datetime="2019-09-10T17:53:09.206Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/11/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/11/hello-world/">Hello World</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -261,8 +381,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
