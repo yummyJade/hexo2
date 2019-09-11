@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>webpack css模块化和ant-design按需加载冲突 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="其实具体出现了什么问题，我也记得不清楚了，今天突然回想起来必须记录一下，一个思想就是用exclude将node_module目录下的文件排除，网上有很多相关例子，但不知是不是因为时间久远，都不生效，无奈，又只好啃回官方文档，我的解决方式如下 webpack正常打包的话，所有的css都会被打包在一起，造成css的全局污染，我们可以采用模块化的方式，其实就是借用hash改变类或id名webpack">
+  <meta name="description" content="其实具体出现了什么问题，我也记得不清楚了，今天突然回想起来必须记录一下，一个思想就是用exclude将node_module目录下的文件排除，网上有很多相关例子，但不知是不是因为时间久远，都不生效，无奈，又只好啃回官方文档">
 <meta name="keywords" content="react,javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack css模块化和ant-design按需加载冲突">
 <meta property="og:url" content="http://yoursite.com/2019/09/11/webpack-css模块化和ant-design按需加载冲突/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="其实具体出现了什么问题，我也记得不清楚了，今天突然回想起来必须记录一下，一个思想就是用exclude将node_module目录下的文件排除，网上有很多相关例子，但不知是不是因为时间久远，都不生效，无奈，又只好啃回官方文档，我的解决方式如下 webpack正常打包的话，所有的css都会被打包在一起，造成css的全局污染，我们可以采用模块化的方式，其实就是借用hash改变类或id名webpack">
+<meta property="og:description" content="其实具体出现了什么问题，我也记得不清楚了，今天突然回想起来必须记录一下，一个思想就是用exclude将node_module目录下的文件排除，网上有很多相关例子，但不知是不是因为时间久远，都不生效，无奈，又只好啃回官方文档">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-11T06:34:40.781Z">
+<meta property="og:updated_time" content="2019-09-11T06:36:44.930Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack css模块化和ant-design按需加载冲突">
-<meta name="twitter:description" content="其实具体出现了什么问题，我也记得不清楚了，今天突然回想起来必须记录一下，一个思想就是用exclude将node_module目录下的文件排除，网上有很多相关例子，但不知是不是因为时间久远，都不生效，无奈，又只好啃回官方文档，我的解决方式如下 webpack正常打包的话，所有的css都会被打包在一起，造成css的全局污染，我们可以采用模块化的方式，其实就是借用hash改变类或id名webpack">
+<meta name="twitter:description" content="其实具体出现了什么问题，我也记得不清楚了，今天突然回想起来必须记录一下，一个思想就是用exclude将node_module目录下的文件排除，网上有很多相关例子，但不知是不是因为时间久远，都不生效，无奈，又只好啃回官方文档">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -185,9 +185,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <a id="more"></a>
+        <p>其实具体出现了什么问题，我也记得不清楚了，今天突然回想起来必须记录一下，一个思想就是用exclude将node_module目录下的文件排除，网上有很多相关例子，但不知是不是因为时间久远，都不生效，无奈，又只好啃回官方文档</p>
+<a id="more"></a>
 
-<p>其实具体出现了什么问题，我也记得不清楚了，今天突然回想起来必须记录一下，一个思想就是用exclude将node_module目录下的文件排除，网上有很多相关例子，但不知是不是因为时间久远，都不生效，无奈，又只好啃回官方文档，我的解决方式如下</p>
+<p>我的解决方式如下</p>
 <p>webpack正常打包的话，所有的css都会被打包在一起，造成css的全局污染，我们可以采用模块化的方式，其实就是借用hash改变类或id名<br><strong>webpack.config.js</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">  module: &#123;</span><br><span class="line">    rules: [     </span><br><span class="line"> &#123;</span><br><span class="line">        test: /\.(js|jsx)$/,</span><br><span class="line">        loader: &quot;babel-loader&quot;,</span><br><span class="line"></span><br><span class="line">        options: &#123;</span><br><span class="line">          // presets: [</span><br><span class="line">          //           //   &quot;env&quot;</span><br><span class="line">          //           // ],</span><br><span class="line">          plugins: [</span><br><span class="line">              [ &quot;import&quot;,&#123;libraryName: &quot;antd&quot;, style: &apos;css&apos;&#125;] // antd按需加载</span><br><span class="line">          ]</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        exclude: /node_module/</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;//CSS处理</span><br><span class="line">        test: /\.css$/,</span><br><span class="line">        use: [&apos;style-loader&apos;, &apos;css-loader?modules&apos;],</span><br><span class="line">        exclude: /node_modules/,</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      &#123;//antd样式处理</span><br><span class="line">        test:/\.css$/,</span><br><span class="line">        exclude:/src/,</span><br><span class="line">        use:[</span><br><span class="line">          &#123; loader: &quot;style-loader&quot;,&#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            loader: &quot;css-loader&quot;,</span><br><span class="line">            options:&#123;</span><br><span class="line">              importLoaders:1</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;,</span><br><span class="line">//其他配置项</span><br><span class="line">       &#125;</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
 
@@ -448,15 +449,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javasrcipt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javasrcipt</a>
               </li>
             
             <div class="clearfix"></div>
