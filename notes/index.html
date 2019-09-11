@@ -294,22 +294,27 @@
   
   
   
-  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
-  var cloudTieConfig = {
-    url: "http://yoursite.com/notes/index.html", 
-    sourceId: "",
-    productKey: "true",
-    target: "cloud-tie-wrapper"
-  };
+var gitment = new Gitment({
+  id: "http://yoursite.com/notes/index.html",
+  owner: 'yummyJade',
+  repo: 'HexoBlogComment',
+  oauth: {
+    client_id: '2f41808c2707021fe345',
+    client_secret: 'bca1f2463cba87d80ddacc85112fa7ff9cd8f5e8',
+  },
+})
+gitment.render('gitment-ctn')
 </script>
-<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
-  
-
-  
-
-  
-
   
 
 
