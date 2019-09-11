@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>React Hook父组件获取子组件的数据/函数 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我们知道在react中，常用props实现子组件数据到父组件的传递，但是父组件调用子组件的功能却不常用。文档上说ref其实不是最佳的选择，但是想着偷懒不学redux，在网上找了很多教程，要不就是hook的讲的太少，要不就是父子组件傻傻分不清，于是只好再啃了一下文档，就学了一下其它hook的api。在这里我们需要用到useImperativeHandle这个api，其函数形式为 1useImpera">
-<meta name="keywords" content="javasrcipt,react">
+  <meta name="description" content="我们知道在react中，常用props实现子组件数据到父组件的传递，但是父组件调用子组件的功能却不常用。文档上说ref其实不是最佳的选择，但是想着偷懒不学redux，在网上找了很多教程，要不就是hook的讲的太少，要不就是父子组件傻傻分不清，于是只好再啃了一下文档，就学了一下其它hook的api。">
+<meta name="keywords" content="react,javasrcipt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React Hook父组件获取子组件的数据&#x2F;函数">
 <meta property="og:url" content="http://yoursite.com/2019/09/11/React-Hook父组件获取子组件的数据-函数/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="我们知道在react中，常用props实现子组件数据到父组件的传递，但是父组件调用子组件的功能却不常用。文档上说ref其实不是最佳的选择，但是想着偷懒不学redux，在网上找了很多教程，要不就是hook的讲的太少，要不就是父子组件傻傻分不清，于是只好再啃了一下文档，就学了一下其它hook的api。在这里我们需要用到useImperativeHandle这个api，其函数形式为 1useImpera">
+<meta property="og:description" content="我们知道在react中，常用props实现子组件数据到父组件的传递，但是父组件调用子组件的功能却不常用。文档上说ref其实不是最佳的选择，但是想着偷懒不学redux，在网上找了很多教程，要不就是hook的讲的太少，要不就是父子组件傻傻分不清，于是只好再啃了一下文档，就学了一下其它hook的api。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-11T06:31:20.718Z">
+<meta property="og:updated_time" content="2019-09-11T06:35:04.809Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React Hook父组件获取子组件的数据&#x2F;函数">
-<meta name="twitter:description" content="我们知道在react中，常用props实现子组件数据到父组件的传递，但是父组件调用子组件的功能却不常用。文档上说ref其实不是最佳的选择，但是想着偷懒不学redux，在网上找了很多教程，要不就是hook的讲的太少，要不就是父子组件傻傻分不清，于是只好再啃了一下文档，就学了一下其它hook的api。在这里我们需要用到useImperativeHandle这个api，其函数形式为 1useImpera">
+<meta name="twitter:description" content="我们知道在react中，常用props实现子组件数据到父组件的传递，但是父组件调用子组件的功能却不常用。文档上说ref其实不是最佳的选择，但是想着偷懒不学redux，在网上找了很多教程，要不就是hook的讲的太少，要不就是父子组件傻傻分不清，于是只好再啃了一下文档，就学了一下其它hook的api。">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -185,7 +185,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>我们知道在react中，常用props实现子组件数据到父组件的传递，但是父组件调用子组件的功能却不常用。文档上说ref其实不是最佳的选择，但是想着偷懒不学redux，在网上找了很多教程，要不就是hook的讲的太少，要不就是父子组件傻傻分不清，于是只好再啃了一下文档，就学了一下其它hook的api。<br>在这里我们需要用到<code>useImperativeHandle</code>这个api，其函数形式为</p>
+        <p>我们知道在react中，常用props实现子组件数据到父组件的传递，但是父组件调用子组件的功能却不常用。文档上说ref其实不是最佳的选择，但是想着偷懒不学redux，在网上找了很多教程，要不就是hook的讲的太少，要不就是父子组件傻傻分不清，于是只好再啃了一下文档，就学了一下其它hook的api。</p>
+<a id="more"></a>
+
+<p>在这里我们需要用到<code>useImperativeHandle</code>这个api，其函数形式为</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useImperativeHandle(ref, createHandle, [deps])</span><br></pre></td></tr></table></figure>
 
 <p>其实这个api也是ref的一种形式，但是相当于做了一定的优化，可以选择让子组件只暴露一定的api给父组件，根据在文档和其他博客上给出的方法，一共有两大步骤：</p>
@@ -241,11 +244,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javasrcipt</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javasrcipt</a>
         		</li>
       		
 		</ul>
@@ -468,15 +471,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">javasrcipt</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">javasrcipt</a>
               </li>
             
             <div class="clearfix"></div>
