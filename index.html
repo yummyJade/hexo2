@@ -188,11 +188,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation &apos;com.google.android.exoplayer:exoplayer:2.X.X&apos;</span><br></pre></td></tr></table></figure>
 
 <p>发现根本run不起来，并报错如题</p>
-<p>后来在stackoverflow找到了解决方案，来源为：<a href="https://stackoverflow.com/questions/46949622/android-studio-3-0-unable-to-resolve-dependency-for-appdexoptions-compileclas" target="_blank" rel="noopener">https://stackoverflow.com/questions/46949622/android-studio-3-0-unable-to-resolve-dependency-for-appdexoptions-compileclas</a><br>出现问题的原因在于app含有buildtype但是library的依赖没有，所以我们需要添加一个<code>matching configuration fallbacks</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">buildTypes &#123;</span><br><span class="line">      release &#123;</span><br><span class="line">          minifyEnabled false</span><br><span class="line">          proguardFiles getDefaultProguardFile(&apos;proguard-android-optimize.txt&apos;), &apos;proguard-rules.pro&apos;</span><br><span class="line">      &#125;</span><br><span class="line">      dexOptions &#123;</span><br><span class="line"></span><br><span class="line">          // release &amp; debug is in project animators</span><br><span class="line">          matchingFallbacks = [&apos;release&apos;, &apos;debug&apos;]</span><br><span class="line">      &#125;</span><br><span class="line">      debug &#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<p>在dexOptions下增加callback即可</p>
-
+<p>后来在stackoverflow找到了解决方案</p>
+        
+          <a class="article-more-a" href="/2019/09/21/Android-Unable-to-resolve-dependency-for-app-debugUnitTest-compileClasspath/#more">more >></a>
+        
       
 
       
