@@ -7,11 +7,11 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>yummyJade的个人博客</title>
+  <title>Tag: Android | yummyJade的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="yummyJade的个人博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/tags/Android/index.html">
 <meta property="og:site_name" content="yummyJade的个人博客">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
@@ -164,43 +164,34 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Android-Unable-to-resolve-dependency-for-app-debugUnitTest-compileClasspath" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/09/21/Android-Unable-to-resolve-dependency-for-app-debugUnitTest-compileClasspath/" class="archive-article-date">
+  	<time datetime="2019-09-21T03:20:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-21</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/21/Android-Unable-to-resolve-dependency-for-app-debugUnitTest-compileClasspath/">Android: Unable to resolve dependency for &#39;:app@debugUnitTest/compileClasspath&#39;:</a>
+      <a class="archive-article-title" href="/2019/09/21/Android-Unable-to-resolve-dependency-for-app-debugUnitTest-compileClasspath/">Android: Unable to resolve dependency for &#39;:app@debugUnitTest/compileClasspath&#39;:</a>
     </h1>
   
 
-        
-        <a href="/2019/09/21/Android-Unable-to-resolve-dependency-for-app-debugUnitTest-compileClasspath/" class="archive-article-date">
-  	<time datetime="2019-09-21T03:20:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我按照ExoPlayer的github指引添加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation &apos;com.google.android.exoplayer:exoplayer:2.X.X&apos;</span><br></pre></td></tr></table></figure>
-
-<p>发现根本run不起来，并报错如题</p>
-<p>后来在stackoverflow找到了解决方案，来源为：<a href="https://stackoverflow.com/questions/46949622/android-studio-3-0-unable-to-resolve-dependency-for-appdexoptions-compileclas" target="_blank" rel="noopener">https://stackoverflow.com/questions/46949622/android-studio-3-0-unable-to-resolve-dependency-for-appdexoptions-compileclas</a><br>出现问题的原因在于app含有buildtype但是library的依赖没有，所以我们需要添加一个<code>matching configuration fallbacks</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">buildTypes &#123;</span><br><span class="line">      release &#123;</span><br><span class="line">          minifyEnabled false</span><br><span class="line">          proguardFiles getDefaultProguardFile(&apos;proguard-android-optimize.txt&apos;), &apos;proguard-rules.pro&apos;</span><br><span class="line">      &#125;</span><br><span class="line">      dexOptions &#123;</span><br><span class="line"></span><br><span class="line">          // release &amp; debug is in project animators</span><br><span class="line">          matchingFallbacks = [&apos;release&apos;, &apos;debug&apos;]</span><br><span class="line">      &#125;</span><br><span class="line">      debug &#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<p>在dexOptions下增加callback即可</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-    
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -212,284 +203,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/21/Android-Unable-to-resolve-dependency-for-app-debugUnitTest-compileClasspath/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-webpack-css模块化和ant-design按需加载冲突" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/11/webpack-css模块化和ant-design按需加载冲突/">webpack css模块化和ant-design按需加载冲突</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/11/webpack-css模块化和ant-design按需加载冲突/" class="archive-article-date">
-  	<time datetime="2019-09-11T06:32:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>其实具体出现了什么问题，我也记得不清楚了，今天突然回想起来必须记录一下，一个思想就是用exclude将node_module目录下的文件排除，网上有很多相关例子，但不知是不是因为时间久远，都不生效，无奈，又只好啃回官方文档</p>
-        
-          <a class="article-more-a" href="/2019/09/11/webpack-css模块化和ant-design按需加载冲突/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-    
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/11/webpack-css模块化和ant-design按需加载冲突/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-React-Hook父组件获取子组件的数据-函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/11/React-Hook父组件获取子组件的数据-函数/">React Hook父组件获取子组件的数据/函数</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/11/React-Hook父组件获取子组件的数据-函数/" class="archive-article-date">
-  	<time datetime="2019-09-11T06:30:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我们知道在react中，常用props实现子组件数据到父组件的传递，但是父组件调用子组件的功能却不常用。文档上说ref其实不是最佳的选择，但是想着偷懒不学redux，在网上找了很多教程，要不就是hook的讲的太少，要不就是父子组件傻傻分不清，于是只好再啃了一下文档，就学了一下其它hook的api。</p>
-        
-          <a class="article-more-a" href="/2019/09/11/React-Hook父组件获取子组件的数据-函数/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-    
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javasrcipt</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/11/React-Hook父组件获取子组件的数据-函数/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-react学习之js-xlsx导入和导出excel表格" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/11/react学习之js-xlsx导入和导出excel表格/">react学习之js-xlsx导入和导出excel表格</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/11/react学习之js-xlsx导入和导出excel表格/" class="archive-article-date">
-  	<time datetime="2019-09-11T01:19:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近发现网上关于react导入导出xlsx的资源过少，特意整理出来</p>
-        
-          <a class="article-more-a" href="/2019/09/11/react学习之js-xlsx导入和导出excel表格/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-    
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/11/react学习之js-xlsx导入和导出excel表格/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
 
 
           </div>
@@ -521,10 +247,10 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
